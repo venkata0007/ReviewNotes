@@ -10,14 +10,11 @@
     <ul>
         <% for (let book of locals.books) { %>
             <li><a href="/books/<%= book.id %>"><%= book.title %></a></li>
-            <div class="feature col"> <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"> <svg class="bi" width="1em" height="1em" aria-hidden="true"><use xlink:href="#collection"></use></svg> </div> <h3 class="fs-2 text-body-emphasis"><%= book.title %></h3> 
+            <img src="<%= book.cover_url %>" alt="<%= book.title %> Cover" style="width: 150px; height: auto;">
             <p>Rating: <%= book.rating %>/5</p>
             <p><%=book.notes%></p> 
             <p><%=book.created_at%></p>
-            <a href="#" class="icon-link">
-                Call to action
-                <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> </div>
-        <% } %>
+           <% } %>
     </ul>
 <% } else { %>
     <p>No books available.</p>

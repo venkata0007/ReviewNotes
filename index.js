@@ -45,7 +45,9 @@ app.get("/", async(req, res) => {
     const result = await db.query("SELECT * FROM books ORDER BY " + sortby + " DESC;");
     let books = [];
     result.rows.forEach((book) => {
-        books.push(book);
+      book.cover_url = `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`;
+
+      books.push(book);
     });
     console.log(result.rows);
     res.render("index.ejs", { books: books });
@@ -56,8 +58,9 @@ app.post("/new", async(req, res) => {
     const title = req.body.title;
     const author = req.body.author;
     const isbn = req.body.isbn;
+    const notes = req.body.notes;
     const rating = req.body.rating;
-    await db.query("INSERT INTO books (title, author, rating, isbn) VALUES ($1, $2, $3, $4);", [title, author, rating, isbn]);
+    await db.query("INSERT INTO books (title, author, rating, isbn,notes) VALUES ($1, $2, $3, $4,$5);", [title, author, rating, isbn,notes]);
     res.redirect("/");
 }
 );
