@@ -1,0 +1,9 @@
+body {
+    background-color: black;
+    color: white; /* Optional: Set text color to white for better contrast */
+}
+.txt{
+    /* background-color: black; */
+    text-align: center;
+    /* color: white; Optional: Set text color to white for better contrast */
+}

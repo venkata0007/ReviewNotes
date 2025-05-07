@@ -1,6 +1,7 @@
 <%- include('partials/header.ejs') %>
+<div class = "container align-items-center">
 <%if(locals.books){ %>
-    <h2>Books</h2>
+    <h2 class = "txt">Books</h2>
     <p>Tiny summary but detailed notes for each. Use the ISBN number to find it from your local library or anywhere else. This page will constantly update as I read more, so bookmark it if you want to check back in a few months.</p>
     <p>Sorted with my top recommendations up top. Sort by 
     <a href="/?sortby=title">title</a>,
@@ -9,11 +10,31 @@
 </p>
     <ul>
         <% for (let book of locals.books) { %>
-            <li><a href="/books/<%= book.id %>"><%= book.title %></a></li>
-            <img src="<%= book.cover_url %>" alt="<%= book.title %> Cover" style="width: 150px; height: auto;">
-            <p>Rating: <%= book.rating %>/5</p>
-            <p><%=book.notes%></p> 
-            <p><%=book.created_at%></p>
+            <div class="row align-items-center g-5">
+      
+                <!-- Image column (left) -->
+                <div class="col-md-4 text-center">
+                  <img src="<%= book.cover_url %>" class="img-fluid" alt="<%= book.title %> Cover" width="150" height="200" loading="lazy">
+                </div>
+          
+                <!-- Text content column (right) -->
+                <div class="col-md-8">
+                  <a href="/books/<%= book.id %>">
+                    <h1 class="display-6 fw-bold text-body-emphasis mb-3">
+                      <%= book.title %>
+                    </h1>
+                  </a>
+                  
+                  <p>Rating: <%= book.rating %>/5</p>
+                  <p>ISBN: <%= book.isbn %></p>
+                  <p>Added on: <%= book.created_at.toDateString ? book.created_at.toDateString() : book.created_at %></p>
+                </div>
+                <div>
+                    <p class="lead"><%= book.notes %></p>
+                </div>
+            
+            
+            
            <% } %>
     </ul>
 <% } else { %>
@@ -30,14 +51,14 @@
         <input type="text" class="form-control" id="isbn" name="isbn" required>
     </div>
     <div>
-        <label for="notes" class="form-label">Notes</label>
+        <label for="notes" class="form-label txt">Notes</label>
         <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
     </div>
     <div>
-        <label for="rating" class="form-label">Rating</label>
+        <label for="rating" class="form-label txt">Rating</label>
         <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
     </div>
-    <button type="submit" class="btn btn-primary">Add Book</button>
+    <button type="submit" class="btn btn-primary txt">Add Book</button>
 </form>
-
+</div>
 <%- include('partials/footer.ejs') %>
