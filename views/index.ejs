@@ -1,0 +1,46 @@
+<%- include('partials/header.ejs') %>
+<%if(locals.books){ %>
+    <h2>Books</h2>
+    <p>Tiny summary but detailed notes for each. Use the ISBN number to find it from your local library or anywhere else. This page will constantly update as I read more, so bookmark it if you want to check back in a few months.</p>
+    <p>Sorted with my top recommendations up top. Sort by 
+    <a href="/?sortby=title">title</a>,
+    <a href="/?sortby=date">newest</a>,
+    <a href="/?sortby=rating">best</a>
+</p>
+    <ul>
+        <% for (let book of locals.books) { %>
+            <li><a href="/books/<%= book.id %>"><%= book.title %></a></li>
+            <div class="feature col"> <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"> <svg class="bi" width="1em" height="1em" aria-hidden="true"><use xlink:href="#collection"></use></svg> </div> <h3 class="fs-2 text-body-emphasis"><%= book.title %></h3> 
+            <p>Rating: <%= book.rating %>/5</p>
+            <p><%=book.notes%></p> 
+            <p><%=book.created_at%></p>
+            <a href="#" class="icon-link">
+                Call to action
+                <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> </div>
+        <% } %>
+    </ul>
+<% } else { %>
+    <p>No books available.</p>
+<% } %>
+
+<form action = "/new" method="POST">
+    <div >
+        <label for="title" class="form-label">Book Title</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div>
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="text" class="form-control" id="isbn" name="isbn" required>
+    </div>
+    <div>
+        <label for="notes" class="form-label">Notes</label>
+        <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+    </div>
+    <div>
+        <label for="rating" class="form-label">Rating</label>
+        <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Book</button>
+</form>
+
+<%- include('partials/footer.ejs') %>

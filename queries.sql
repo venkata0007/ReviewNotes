@@ -24,9 +24,9 @@ FOR EACH ROW
 EXECUTE FUNCTION update_modified_column();
 
 -- covers for books
-drop table if exists covers;
-create table covers(
-    id SERIAL PRIMARY KEY,
-    book_id INT REFERENCES books(id),
-    cover_image BYTEA,
-);
+-- drop table if exists covers;
+-- create table covers(
+--     id SERIAL PRIMARY KEY,
+--     book_id INT REFERENCES books(id),
+--     cover_image BYTEA,
+-- );
