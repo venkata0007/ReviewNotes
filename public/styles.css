@@ -1,9 +1,24 @@
-body {
-    background-color: black;
-    color: white; /* Optional: Set text color to white for better contrast */
+body, html {
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+    background-color: black; /* Set the background color to black */
+    /* color: white; Optional: Set text color to white for better contrast */
+    padding: 0;
+    background-color: black; /* Optional: Set text color to white for better contrast */
 }
 .txt{
     /* background-color: black; */
     text-align: center;
     /* color: white; Optional: Set text color to white for better contrast */
+}
+.blk{
+    margin: 0;
+    background-color: black;
+    color: white; /* Optional: Set text color to white for better contrast */
+}
+.sub{
+    color :green;
+}
+.grey{
+    color: grey;
 }
