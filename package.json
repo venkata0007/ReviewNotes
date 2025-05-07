@@ -1,0 +1,19 @@
+{
+  "name": "books-notes",
+  "version": "1.0.0",
+  "description": "application to save your notes about books which you read with multiple features",
+  "license": "ISC",
+  "author": "venkat",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "pg": "^8.15.6"
+  }
+}
